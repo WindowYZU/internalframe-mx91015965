@@ -8,6 +8,7 @@ package lendle.courses.wp.internalframesamples;
 import java.awt.BorderLayout;
 import java.awt.Dimension;
 import java.awt.FlowLayout;
+import java.beans.PropertyVetoException;
 import javax.swing.JDesktopPane;
 import javax.swing.JFrame;
 import javax.swing.JInternalFrame;
@@ -24,7 +25,7 @@ public class InternalFrameInDesktopPane {
     /**
      * @param args the command line arguments
      */
-    public static void main(String[] args) {
+    public static void main(String[] args) throws PropertyVetoException {
         // TODO code application logic here
         JFrame frame=new JFrame();
         frame.setDefaultCloseOperation(WindowConstants.DISPOSE_ON_CLOSE);
@@ -33,7 +34,15 @@ public class InternalFrameInDesktopPane {
         //create a desktoppane
         //add internalFrame to it
         //make it visible
-        
+        JDesktopPane jDesktopPane=new JDesktopPane();
+        frame.setContentPane(jDesktopPane);
+        JInternalFrame jInternalFrame=new JInternalFrame();
+        frame.add(jInternalFrame);
+        jInternalFrame.setSize(300, 300);
+        jInternalFrame.setVisible(true);
+        jInternalFrame.setMaximizable(true);
+        jInternalFrame.setIconifiable(true);
+        jInternalFrame.setResizable(true);
         /////////////////////////////////
         frame.setVisible(true);
     }
