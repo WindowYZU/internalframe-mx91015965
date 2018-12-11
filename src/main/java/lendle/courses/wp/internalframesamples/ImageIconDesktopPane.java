@@ -36,7 +36,12 @@ public class ImageIconDesktopPane extends JDesktopPane{
     @Override
     protected void printComponent(Graphics g) {
         super.printComponent(g); //To change body of generated methods, choose Tools | Templates.
-        g.drawImage(image, 0, 0, getWidth(), getHeight(), this);
+        if(this.getWidth()<image.getWidth(this)||this.getHeight()<image.getHeight(this)){
+            g.drawImage(image, 0, 0, this);
+        }else{
+            g.drawImage(image, this.getWidth()/2-image.getWidth(this)/2,
+                     this.getHeight()/2-image.getHeight(this), this);
+        }
     }
     
 }
